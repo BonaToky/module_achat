@@ -3,6 +3,15 @@ CREATE TABLE role (
     libelle VARCHAR(50) NOT NULL
 );
 
+INSERT INTO role (libelle) VALUES
+('client'),
+('caissier'),
+('gestionnaire des stock'),
+('admin');
+
+INSERT INTO users (nom, prenom, numero, password_hash, adress, solde, id_role, actif) VALUES
+('Doe', 'John', '1234567890', 'hashed_password_1', '123 Main St', 0, 1, TRUE);
+
 CREATE TABLE users (
     id_users SERIAL PRIMARY KEY,
     nom VARCHAR(50) NOT NULL,
