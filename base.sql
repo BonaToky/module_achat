@@ -44,6 +44,31 @@ CREATE TABLE ticket (
 );
 
 
+CREATE TABLE panier (
+    id_panier SERIAL PRIMARY KEY,
+    id_client INT NOT NULL,
+    id_produit INT NOT NULL,
+    quantite INT NOT NULL CHECK (quantite > 0),
+    date_ajout TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    date_modification TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    CONSTRAINT fk_panier_client
+        FOREIGN KEY (id_client)
+        REFERENCES users(id_users)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    
+    CONSTRAINT fk_panier_produit
+        FOREIGN KEY (id_produit)
+        REFERENCES produit(id_produit)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    
+    CONSTRAINT uq_panier_client_produit
+        UNIQUE (id_client, id_produit)
+);
+
+
 CREATE TABLE categorie (
     id_categorie SERIAL PRIMARY KEY,
     libelle VARCHAR(50) NOT NULL
@@ -86,7 +111,7 @@ CREATE TABLE details_vente (
         REFERENCES ticket(id_ticket)
 );
 
-
+  
 CREATE TABLE historique_prix (
     id_historique SERIAL PRIMARY KEY,
     id_produit INT NOT NULL,
@@ -153,5 +178,3 @@ INSERT INTO role (libelle) VALUES
 ('caissier'),
 ('gestionnaire des stock'),
 ('admin');
-
-
