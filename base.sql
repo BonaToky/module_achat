@@ -196,5 +196,14 @@ INSERT INTO categorie (libelle) VALUES
 ('Mémoire RAM'),
 ('Disques durs & SSD');
 
+CREATE TYPE type_mouvement_stock AS ENUM ('entree', 'sortie');
+CREATE TYPE mode_paiement AS ENUM ('cash', 'mobile_money', 'carte');
+
+
+INSERT INTO role (libelle) VALUES
+('client'),
+('caissier'),
+('gestionnaire des stock'),
+('admin');
 
 
