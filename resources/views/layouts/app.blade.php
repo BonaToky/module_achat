@@ -49,10 +49,10 @@
                         {{-- <li><a href="{{ route('produits.index') }}" class="{{ request()->routeIs('produits.*') ? 'active' : '' }}">
                             <i class="bi bi-box"></i> Produits
                         </a></li> --}}
-                        
-                        {{-- <li><a href="{{ route('categories.index') }}" class="{{ request()->routeIs('categories.*') ? 'active' : '' }}">
-                            <i class="bi bi-tags"></i> Catégories
-                        </a></li> --}}
+
+                        <li><a href="{{ route('produits.index') }}" class="{{ request()->routeIs('produits.*') ? 'active' : '' }}">
+                            <i class="bi bi-box"></i> Produits
+                        </a></li>
                         
                         <li><a href="{{ route('mouvements.index') }}" class="{{ request()->routeIs('mouvements.*') ? 'active' : '' }}">
                             <i class="bi bi-arrow-left-right"></i> Mouvements
