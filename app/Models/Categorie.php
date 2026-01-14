@@ -29,3 +29,4 @@ class Categorie extends Model
         return $this->hasMany(MouvementStock::class, 'id_categorie', 'id_categorie');
     }
 }
+

@@ -200,6 +200,9 @@ return [
         App\Providers\ProduitServiceProvider::class,
         App\Providers\MouvementStockServiceProvider::class,
 
+        App\Providers\VenteServiceProvider::class,
+
+
     ],
 
     /*

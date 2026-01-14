@@ -16,6 +16,8 @@ class MouvementStock extends Model
     const CREATED_AT = 'date_mouv';
     const UPDATED_AT = null; // Pas de updated_at
 
+    public $timestamps = false;
+
     protected $fillable = [
         'type_mouvement_stock',
         'quantite',
