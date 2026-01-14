@@ -13,3 +13,4 @@ class ProduitController extends Controller
         return view('produits.index', compact('produits'));
     }
 }
+

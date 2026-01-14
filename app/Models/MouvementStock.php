@@ -11,25 +11,46 @@ class MouvementStock extends Model
 
     protected $table = 'mouvement_stock';
     protected $primaryKey = 'id_mouvement_stock';
+    
+    // Le champ 'date_mouv' est utilisé comme timestamp
+    const CREATED_AT = 'date_mouv';
+    const UPDATED_AT = null; // Pas de updated_at
+
     public $timestamps = false;
 
     protected $fillable = [
         'type_mouvement_stock',
         'quantite',
-        'date_mouv',
         'id_categorie',
-        'id_produit',
+        'id_produit'
     ];
 
-    protected $dates = ['date_mouv'];
+    protected $casts = [
+        'date_mouv' => 'datetime',
+        'quantite' => 'integer'
+    ];
 
+    // Relation avec la catégorie
     public function categorie()
     {
-        return $this->belongsTo(Categorie::class, 'id_categorie');
+        return $this->belongsTo(Categorie::class, 'id_categorie', 'id_categorie');
     }
 
+    // Relation avec le produit
     public function produit()
     {
-        return $this->belongsTo(Produit::class, 'id_produit');
+        return $this->belongsTo(Produit::class, 'id_produit', 'id_produit');
+    }
+
+    // Scope pour les entrées de stock (si quantite > 0)
+    public function scopeEntrees($query)
+    {
+        return $query->where('quantite', '>', 0);
+    }
+
+    // Scope pour les sorties de stock (si quantite < 0)
+    public function scopeSorties($query)
+    {
+        return $query->where('quantite', '<', 0);
     }
 }

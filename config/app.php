@@ -196,8 +196,12 @@ return [
         App\Providers\RouteServiceProvider::class,
         // App\Providers\StockServiceProvider::class,
         App\Providers\LoginServiceProvider::class,
+        App\Providers\CategorieServiceProvider::class,
         App\Providers\ProduitServiceProvider::class,
+        App\Providers\MouvementStockServiceProvider::class,
+
         App\Providers\VenteServiceProvider::class,
+
 
     ],
 

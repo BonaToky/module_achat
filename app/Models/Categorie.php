@@ -11,14 +11,22 @@ class Categorie extends Model
 
     protected $table = 'categorie';
     protected $primaryKey = 'id_categorie';
-    public $timestamps = true;
+    public $timestamps = false; // Pas de created_at/updated_at dans la table
 
     protected $fillable = [
-        'libelle',
+        'libelle'
     ];
 
+    // Relation avec les produits
     public function produits()
     {
-        return $this->hasMany(Produit::class, 'id_categorie');
+        return $this->hasMany(Produit::class, 'id_categorie', 'id_categorie');
+    }
+
+    // Relation avec les mouvements de stock
+    public function mouvementsStock()
+    {
+        return $this->hasMany(MouvementStock::class, 'id_categorie', 'id_categorie');
     }
 }
+
