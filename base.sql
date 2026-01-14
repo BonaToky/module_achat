@@ -61,6 +61,21 @@ CREATE TABLE produit (
         REFERENCES categorie(id_categorie)
 );
 
+CREATE TABLE mouvement_stock (
+    id_mouvement_stock SERIAL PRIMARY KEY,
+    type_mouvement_stock VARCHAR(50) NOT NULL,
+    quantite INT NOT NULL,
+    date_mouv TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    id_categorie INT NOT NULL,
+    id_produit INT NOT NULL,
+    CONSTRAINT fk_mouv_categorie
+        FOREIGN KEY (id_categorie)
+        REFERENCES categorie(id_categorie),
+    CONSTRAINT fk_mouv_produit
+        FOREIGN KEY (id_produit)
+        REFERENCES produit(id_produit)
+);
+
 CREATE TABLE Limite_Stock_Produit (
     id_stock SERIAL PRIMARY KEY,
     id_produit INT NOT NULL REFERENCES produit(id_produit),
@@ -102,21 +117,6 @@ CREATE TABLE historique_prix (
 );
 
 
-CREATE TABLE mouvement_stock (
-    id_mouvement_stock SERIAL PRIMARY KEY,
-    type_mouvement_stock VARCHAR(50) NOT NULL,
-    quantite INT NOT NULL,
-    date_mouv TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    id_categorie INT NOT NULL,
-    id_produit INT NOT NULL,
-    CONSTRAINT fk_mouv_categorie
-        FOREIGN KEY (id_categorie)
-        REFERENCES categorie(id_categorie),
-    CONSTRAINT fk_mouv_produit
-        FOREIGN KEY (id_produit)
-        REFERENCES produit(id_produit)
-);
-
 
 CREATE TABLE livraison (
     id_livraison SERIAL PRIMARY KEY,
@@ -153,5 +153,23 @@ INSERT INTO role (libelle) VALUES
 ('caissier'),
 ('gestionnaire des stock'),
 ('admin');
+
+
+INSERT INTO categorie (libelle) VALUES
+('Smartphones'),
+('Ordinateurs portables'),
+('Ordinateurs de bureau'),
+('Tablettes'),
+('Téléviseurs'),
+('Réseaux & Connectivité'),
+('Vidéo'),
+('Appareils photo'),
+('Alimentations & chargeurs'),
+('Cartes graphiques'),
+('Cartes mères'),
+('Processeurs'),
+('Mémoire RAM'),
+('Disques durs & SSD');
+
 
 
