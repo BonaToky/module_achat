@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
 
-    <h1 class="h3 mb-4">Sélection des Produits à Vendre</h1>
+    <h1 class="h3 mb-4">Sélection des Produits à acheter</h1>
 
     {{-- Messages --}}
     @if(session('success'))

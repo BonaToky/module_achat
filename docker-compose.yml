@@ -21,17 +21,18 @@ services:
     networks:
       - laravel
 
-  postgres:
-    image: postgres:13
-    container_name: modul_achat_postgres
+  mysql:
+    image: mysql:8.0
+    container_name: modul_achat_mysql
     environment:
-      POSTGRES_DB: projet_laravel
-      POSTGRES_USER: toky
-      POSTGRES_PASSWORD: toky
+      MYSQL_DATABASE: projet_laravel
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: toky
+      MYSQL_USER: toky
     ports:
-      - "5432:5432"
+      - "3306:3306"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mysql_data:/var/lib/mysql
     networks:
       - laravel
 
@@ -40,4 +41,4 @@ networks:
     driver: bridge
 
 volumes:
-  postgres_data:
+  mysql_data:

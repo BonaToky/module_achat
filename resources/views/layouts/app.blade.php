@@ -46,9 +46,9 @@
                             <i class="bi bi-speedometer2"></i> Dashboard
                         </a></li> --}}
                         
-                        {{-- <li><a href="{{ route('produits.index') }}" class="{{ request()->routeIs('produits.*') ? 'active' : '' }}">
-                            <i class="bi bi-box"></i> Produits
-                        </a></li> --}}
+                        <li><a href="{{ route('ventes.create') }}" class="{{ request()->routeIs('ventes.*') ? 'active' : '' }}">
+                            <i class="bi bi-box"></i> Achat
+                        </a></li>
 
                         <li><a href="{{ route('produits.index') }}" class="{{ request()->routeIs('produits.*') ? 'active' : '' }}">
                             <i class="bi bi-box"></i> Produits
