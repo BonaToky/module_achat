@@ -5,7 +5,7 @@ CREATE TABLE role (
 
 INSERT INTO role (libelle) VALUES
 ('client'),
-('caissier'),
+('caissier'), 
 ('gestionnaire des stock'),
 ('admin');
 
