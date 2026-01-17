@@ -5,17 +5,19 @@ use App\Models\MouvementStock;
 use App\Models\Produit;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MouvementStockController extends Controller
 {
 
     public function index()
     {
+        $produits = Produit::orderBy('nom')->get(); // ← Ajoutez cette ligne
         $mouvements = MouvementStock::with(['produit', 'categorie'])
             ->orderBy('date_mouv', 'desc')
             ->paginate(15);
         
-        return view('mouvements.index', compact('mouvements'));
+        return view('mouvements.index', compact('mouvements', 'produits')); // ← Ajoutez $produits
     }
 
     /**
@@ -52,36 +54,31 @@ class MouvementStockController extends Controller
         try {
             $produit = Produit::findOrFail($request->id_produit);
             
-            // Vérifier si c'est une sortie et si le stock est suffisant
-            if ($request->type_mouvement_stock == 'SORTIE' || 
-                $request->type_mouvement_stock == 'PERDU') {
+            // Convertir le type en minuscules pour correspondre à l'ENUM
+            $type = strtolower($request->type_mouvement_stock);
+            
+            // Vérifier si c'est une valeur valide pour l'ENUM
+            if (!in_array($type, ['entree', 'sortie'])) {
+                return back()->withInput()
+                    ->with('error', 'Type de mouvement invalide. Utilisez "ENTREE" ou "SORTIE".');
+            }
+            
+            // Vérifier le stock pour les sorties
+            if ($type == 'sortie') {
+                $stockActuel = $produit->stock_actuel;
                 
-                if ($request->quantite > $produit->quantite_stock) {
+                if ($request->quantite > $stockActuel) {
                     return back()->withInput()
-                        ->with('error', 'Stock insuffisant! Stock disponible: ' . $produit->quantite_stock);
+                        ->with('error', 'Stock insuffisant! Stock disponible: ' . $stockActuel);
                 }
-                
-                $produit->quantite_stock -= $request->quantite;
-            } 
-            // Pour les entrées
-            elseif ($request->type_mouvement_stock == 'ENTREE' || 
-                   $request->type_mouvement_stock == 'RETOUR' ||
-                   $request->type_mouvement_stock == 'DON') {
-                
-                $produit->quantite_stock += $request->quantite;
-            }
-            // Pour l'inventaire, on met directement la quantité
-            elseif ($request->type_mouvement_stock == 'INVENTAIRE') {
-                $produit->quantite_stock = $request->quantite;
             }
             
-            $produit->save();
-            
-            // Créer le mouvement
+            // Créer le mouvement avec le type en minuscules
             MouvementStock::create([
-                'type_mouvement_stock' => $request->type_mouvement_stock . 
-                                        ($request->commentaire ? ' - ' . $request->commentaire : ''),
-                'quantite' => $request->quantite,
+                'type_mouvement_stock' => $type, // 'entree' ou 'sortie' en minuscules
+                'quantite' => $type == 'sortie' 
+                    ? -$request->quantite // Négatif pour les sorties
+                    : $request->quantite,  // Positif pour les entrées
                 'id_produit' => $request->id_produit,
                 'id_categorie' => $request->id_categorie,
                 'date_mouv' => $request->date_mouv ?? now(),
@@ -91,7 +88,7 @@ class MouvementStockController extends Controller
 
             return redirect()->route('mouvements.index')
                 ->with('success', 'Mouvement enregistré avec succès!');
-                
+                    
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->withInput()

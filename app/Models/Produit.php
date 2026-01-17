@@ -11,37 +11,6 @@ class Produit extends Model
 
     protected $table = 'produit';
     protected $primaryKey = 'id_produit';
-// <<<<<<< Bona
-    
-//     protected $fillable = [
-//         'nom',
-//         'image',
-//         'id_categorie'
-//     ];
-
-//     protected $casts = [
-//         'created_at' => 'datetime',
-//         'updated_at' => 'datetime'
-//     ];
-
-//     // Relation avec la catégorie
-//     public function categorie()
-//     {
-//         return $this->belongsTo(Categorie::class, 'id_categorie', 'id_categorie');
-//     }
-
-//     // Relation avec les mouvements de stock
-//     public function mouvementsStock()
-//     {
-//         return $this->hasMany(MouvementStock::class, 'id_produit', 'id_produit');
-//     }
-
-//     // Méthode pour calculer le stock actuel (quantité totale)
-//     public function stockActuel()
-//     {
-//         return $this->mouvementsStock()->sum('quantite');
-//     }
-// }
     public $timestamps = true;
 
     protected $fillable = [

@@ -55,7 +55,15 @@
                         </a></li>
                         
                         <li><a href="{{ route('mouvements.index') }}" class="{{ request()->routeIs('mouvements.*') ? 'active' : '' }}">
-                            <i class="bi bi-arrow-left-right"></i> Mouvements
+                            <i class="bi bi-arrow-left-right"></i> voir Mouvements
+                        </a></li>
+
+                        <li><a href="{{ route('mouvements.create') }}" class="{{ request()->routeIs('mouvements.*') ? 'active' : '' }}">
+                            <i class="bi bi-arrow-left-right"></i> Créer Mouvement
+                        </a></li>
+
+                        <li><a href="{{ route('historique-prix.index') }}" class="{{ request()->routeIs('mouvements.*') ? 'active' : '' }}">
+                            <i class="bi bi-arrow-left-right"></i> History prix
                         </a></li>
                     </ul>
                 </div>

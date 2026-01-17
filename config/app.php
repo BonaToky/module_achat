@@ -201,7 +201,7 @@ return [
         App\Providers\MouvementStockServiceProvider::class,
 
         App\Providers\VenteServiceProvider::class,
-
+        App\Providers\HistoryPrixProvider::class,
 
     ],
 

@@ -11,14 +11,20 @@ class Role extends Model
 
     protected $table = 'role';
     protected $primaryKey = 'id_role';
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'libelle',
+        'description'
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
     ];
 
     public function users()
     {
-        return $this->hasMany(User::class, 'id_role');
+        return $this->hasMany(User::class, 'id_role', 'id_role');
     }
 }
