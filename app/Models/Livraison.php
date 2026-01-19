@@ -9,9 +9,8 @@ class Livraison extends Model
 {
     use HasFactory;
 
-    protected $table = 'livraison';
+    protected $table = 'livraisons';
     protected $primaryKey = 'id_livraison';
-    public $timestamps = true;
 
     protected $fillable = [
         'id_ticket',
@@ -20,14 +19,13 @@ class Livraison extends Model
         'date_livraison_prevue',
         'date_livraison_reelle',
         'livreur_id',
-        'notes',
+        'notes'
     ];
 
-    protected $dates = ['date_livraison_prevue', 'date_livraison_reelle'];
-
+    // Relations
     public function ticket()
     {
-        return $this->belongsTo(Ticket::class, 'id_ticket');
+        return $this->belongsTo(Ticket::class, 'id_ticket', 'id_ticket');
     }
 
     public function livreur()
