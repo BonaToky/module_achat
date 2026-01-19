@@ -38,8 +38,7 @@ class AuthController extends Controller
         if ($roles->isEmpty()) {
             // Créer le rôle Client par défaut
             Role::create([
-                'libelle' => 'Client',
-                'description' => 'Utilisateur standard'
+                'libelle' => 'Client'
             ]);
             
             // Recharger les rôles
@@ -74,8 +73,7 @@ class AuthController extends Controller
                 if (!$firstRole) {
                     // Créer un rôle par défaut si aucun n'existe
                     $firstRole = Role::create([
-                        'libelle' => 'Client',
-                        'description' => 'Utilisateur standard'
+                        'libelle' => 'Client'
                     ]);
                 }
                 $roleId = $firstRole->id_role;

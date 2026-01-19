@@ -69,6 +69,10 @@
                         <li><a href="{{ route('panier.index') }}" class="{{ request()->routeIs('mouvements.*') ? 'active' : '' }}">
                             <i class="bi bi-arrow-left-right"></i> voir Panier
                         </a></li>
+
+                        <li><a href="{{ route('livraisons.index') }}" class="{{ request()->routeIs('mouvements.*') ? 'active' : '' }}">
+                            <i class="bi bi-arrow-left-right"></i> voir livraison
+                        </a></li>
                     </ul>
                 </div>
             </div>

@@ -14,8 +14,7 @@ class Role extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'libelle',
-        'description'
+        'libelle'
     ];
 
     protected $casts = [

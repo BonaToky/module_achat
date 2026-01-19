@@ -202,6 +202,7 @@ return [
 
         App\Providers\VenteServiceProvider::class,
         App\Providers\HistoryPrixProvider::class,
+        App\Providers\LivraisonServiceProvider::class,
 
     ],
 
