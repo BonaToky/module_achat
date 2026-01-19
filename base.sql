@@ -197,104 +197,70 @@ INSERT INTO categorie (libelle) VALUES
 ('Disques durs & SSD');
 
 INSERT INTO produit (nom, image, id_categorie) VALUES
--- Smartphones (id_categorie: 1)
-('iPhone 15 Pro', 'https://images.unsplash.com/photo-1695048133142-2e81d0c61e8c', 1),
-('Samsung Galaxy S24 Ultra', 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf', 1),
-('Google Pixel 8 Pro', 'https://images.unsplash.com/photo-1598327105666-5b89351aff97', 1),
-('OnePlus 12', 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd', 1),
-('Xiaomi 14 Pro', 'https://images.unsplash.com/photo-1596558450268-9c27524ba856', 1),
 
--- Ordinateurs portables (id_categorie: 2)
-('MacBook Pro 16" M3', 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853', 2),
-('Dell XPS 15', 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5', 2),
-('Lenovo ThinkPad X1 Carbon', 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5', 2),
-('Asus ROG Zephyrus G14', 'https://images.unsplash.com/photo-1603302576837-37561b2e2302', 2),
-('HP Spectre x360', 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed', 2),
+-- Smartphones (1)
+('Samsung Galaxy S24 Ultra', 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=800', 1),
+('iPhone 16 Pro Max', 'https://images.unsplash.com/photo-1726582400160-0c1a4e6c3a5c?w=800', 1),
+('Google Pixel 9 Pro', 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800', 1),
+('Xiaomi 14T Pro', 'https://images.unsplash.com/photo-1632287713678-3eccd7731c8d?w=800', 1),
 
--- Ordinateurs de bureau (id_categorie: 3)
-('Apple iMac 24"', 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf', 3),
-('Dell OptiPlex 7010', 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5', 3),
-('HP Pavilion Gaming Desktop', 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea', 3),
-('Corsair One i300', 'https://images.unsplash.com/photo-1555255707-c07966088b7b', 3),
-('Lenovo ThinkCentre M90a', 'https://images.unsplash.com/photo-1597764690470-1501c6bdfb2c', 3),
+-- Ordinateurs portables (2)
+('MacBook Pro 16" M4 Pro', 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800', 2),
+('ASUS ROG Zephyrus G16', 'https://images.unsplash.com/photo-1611078489935-0cb4c2497a00?w=800', 2),
+('Lenovo Legion Pro 7i', 'https://images.unsplash.com/photo-1593640408182-31c70c826ce9?w=800', 2),
+('Dell XPS 15 2025', 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800', 2),
 
--- Tablettes (id_categorie: 4)
-('iPad Pro 12.9"', 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0', 4),
-('Samsung Galaxy Tab S9 Ultra', 'https://images.unsplash.com/photo-1589739900243-4b52e30e59b6', 4),
-('Microsoft Surface Pro 9', 'https://images.unsplash.com/photo-1561154464-82e9adf32764', 4),
-('Amazon Fire HD 10', 'https://images.unsplash.com/photo-1526430752879-b2ebf21b4eac', 4),
-('Lenovo Tab P12 Pro', 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088', 4),
+-- Ordinateurs de bureau (3)
+('PC Gamer Ryzen 7 9800X3D + RTX 5090', 'https://images.unsplash.com/photo-1587202372775-2f29e8b9e2e6?w=800', 3),
+('Station de travail Threadripper PRO', 'https://images.unsplash.com/photo-1587202372677-87295f2e9b8d?w=800', 3),
 
--- Téléviseurs (id_categorie: 5)
-('Samsung QLED 4K 65"', 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1', 5),
-('LG OLED C3 55"', 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1', 5),
-('Sony Bravia XR 75"', 'https://images.unsplash.com/photo-1461151304267-38535e780c79', 5),
-('TCL QLED 50"', 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1', 5),
-('Hisense ULED 85"', 'https://images.unsplash.com/photo-1509281373149-e957c6296406', 5),
+-- Tablettes (4)
+('iPad Pro 13" M4', 'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=800', 4),
+('Samsung Galaxy Tab S10 Ultra', 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800', 4),
+('Xiaomi Pad 7 Pro', 'https://images.unsplash.com/photo-1589739909214-325a409151a0?w=800', 4),
 
--- Réseaux & Connectivité (id_categorie: 6)
-('TP-Link Archer AX73', 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7', 6),
-('Netgear Nighthawk RAX70', 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7', 6),
-('Google Nest Wifi Pro', 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31', 6),
-('Ubiquiti UniFi Dream Machine', 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64', 6),
-('Asus RT-AX86U', 'https://images.unsplash.com/photo-1563013544-824ae1b704d3', 6),
+-- Téléviseurs (5)
+('LG OLED C5 65"', 'https://images.unsplash.com/photo-1593359677879-a4bb92f829f1?w=800', 5),
+('Samsung QN90D Neo QLED 75"', 'https://images.unsplash.com/photo-1593784991093-4fe72c2b3e8f?w=800', 5),
+('Sony Bravia 8 55" OLED', 'https://images.unsplash.com/photo-1588108246893-c8f8907b42d0?w=800', 5),
 
--- Vidéo (id_categorie: 7)
-('GoPro Hero 12', 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32', 7),
-('DJI Osmo Pocket 3', 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd', 7),
-('Sony ZV-E10', 'https://images.unsplash.com/photo-1502982720700-bfff97f2ecac', 7),
-('Canon EOS R50', 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2', 7),
-('Insta360 X3', 'https://images.unsplash.com/photo-1606983340126-99ab4feaa64a', 7),
+-- Réseaux & Connectivité (6)
+('Routeur Wi-Fi 7 TP-Link BE800', 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800', 6),
+('Switch Gigabit 24 ports administrable', 'https://images.unsplash.com/photo-1558494949-ef0d7b4b3d95?w=800', 6),
 
--- Appareils photo (id_categorie: 8)
-('Canon EOS R5', 'https://images.unsplash.com/photo-1515376963452-9f6a4850c346', 8),
-('Nikon Z9', 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32', 8),
-('Sony A7 IV', 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd', 8),
-('Fujifilm X-T5', 'https://images.unsplash.com/photo-1502982720700-bfff97f2ecac', 8),
-('Panasonic Lumix S5 II', 'https://images.unsplash.com/photo-1510127034890-ba27508e9f1c', 8),
+-- Vidéo (7)
+('NVIDIA Shield TV Pro 2024', 'https://images.unsplash.com/photo-1617854818583-09e7f077a156?w=800', 7),
+('Apple TV 4K 2025', 'https://images.unsplash.com/photo-1574375927797-7a8e0d9e2e8f?w=800', 7),
 
--- Alimentations & chargeurs (id_categorie: 9)
-('Anker 737 Power Bank', 'https://images.unsplash.com/photo-1546868871-7041f2a55e12', 9),
-('Belkin 65W GaN Charger', 'https://images.unsplash.com/photo-1546868871-7041f2a55e12', 9),
-('Apple MagSafe Charger', 'https://images.unsplash.com/photo-1603383928978-2b0ad0c37c09', 9),
-('RAVPower 90W PD Charger', 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea', 9),
-('Samsung 45W Super Fast Charging', 'https://images.unsplash.com/photo-1526814853725-1f8b2c0262a6', 9),
+-- Appareils photo (8)
+('Sony Alpha 1 II', 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800', 8),
+('Canon EOS R5 Mark II', 'https://images.unsplash.com/photo-1516035069370-29a004b82a99?w=800', 8),
+('Fujifilm X-T50', 'https://images.unsplash.com/photo-1501601983405-7c7cabaa1581?w=800', 8),
 
--- Cartes graphiques (id_categorie: 10)
-('NVIDIA RTX 4090', 'https://images.unsplash.com/photo-1591488320449-011701bb6704', 10),
-('AMD Radeon RX 7900 XTX', 'https://images.unsplash.com/photo-1591488320449-011701bb6704', 10),
-('NVIDIA RTX 4070 Ti', 'https://images.unsplash.com/photo-1552832230-c0197dd311b5', 10),
-('AMD Radeon RX 7800 XT', 'https://images.unsplash.com/photo-1621259182978-fbf83264f0c5', 10),
-('NVIDIA RTX 4060', 'https://images.unsplash.com/photo-1591488320449-011701bb6704', 10),
+-- Alimentations & chargeurs (9)
+('Corsair RM1000x 2024 80+ Gold', 'https://images.unsplash.com/photo-1587202372775-e229f457603e?w=800', 9),
+('Anker Prime 100W GaN Chargeur', 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800', 9),
 
--- Cartes mères (id_categorie: 11)
-('ASUS ROG Maximus Z790', 'https://images.unsplash.com/photo-1552832230-c0197dd311b5', 11),
-('Gigabyte X670E AORUS Master', 'https://images.unsplash.com/photo-1552832230-c0197dd311b5', 11),
-('MSI MPG B650 Edge WiFi', 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea', 11),
-('ASRock B760M Steel Legend', 'https://images.unsplash.com/photo-1555255707-c07966088b7b', 11),
-('ASUS TUF Gaming B550-Plus', 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea', 11),
+-- Cartes graphiques (10)
+('NVIDIA GeForce RTX 5090', 'https://images.unsplash.com/photo-1587202372850-3c4d7b5e3f3f?w=800', 10),
+('AMD Radeon RX 8900 XTX', 'https://images.unsplash.com/photo-1587202372677-87295f2e9b8d?w=800', 10),
 
--- Processeurs (id_categorie: 12)
-('Intel Core i9-14900K', 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7', 12),
-('AMD Ryzen 9 7950X', 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7', 12),
-('Intel Core i7-13700K', 'https://images.unsplash.com/photo-1552832230-c0197dd311b5', 12),
-('AMD Ryzen 7 7800X3D', 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7', 12),
-('Apple M3 Max', 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed', 12),
+-- Cartes mères (11)
+('ASUS ROG Strix X870E-E Gaming', 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800', 11),
+('MSI MPG B650 Carbon WiFi', 'https://images.unsplash.com/photo-1593642634367-d91a135587b5?w=800', 11),
 
--- Mémoire RAM (id_categorie: 13)
-('Corsair Vengeance RGB 32GB DDR5', 'https://images.unsplash.com/photo-1552832230-c0197dd311b5', 13),
-('G.Skill Trident Z5 RGB 64GB', 'https://images.unsplash.com/photo-1552832230-c0197dd311b5', 13),
-('Kingston FURY Beast 16GB DDR4', 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea', 13),
-('Crucial Pro 32GB DDR5', 'https://images.unsplash.com/photo-1555255707-c07966088b7b', 13),
-('TeamGroup T-Force Delta RGB 32GB', 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea', 13),
+-- Processeurs (12)
+('AMD Ryzen 9 9950X', 'https://images.unsplash.com/photo-1593640408182-31c70c826ce9?w=800', 12),
+('Intel Core Ultra 9 285K', 'https://images.unsplash.com/photo-1587202372850-3c4d7b5e3f3f?w=800', 12),
 
--- Disques durs & SSD (id_categorie: 14)
-('Samsung 990 Pro 2TB NVMe', 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea', 14),
-('Western Digital Black SN850X 1TB', 'https://images.unsplash.com/photo-1552832230-c0197dd311b5', 14),
-('Seagate BarraCuda 4TB HDD', 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea', 14),
-('Crucial P5 Plus 2TB', 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed', 14),
-('SanDisk Extreme Portable 4TB', 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea', 14);
+-- Mémoire RAM (13)
+('Corsair Vengeance RGB 64Go DDR5-6400', 'https://images.unsplash.com/photo-1587202372775-e229f457603e?w=800', 13),
+('G.Skill Trident Z5 RGB 32Go DDR5-7200', 'https://images.unsplash.com/photo-1587202372677-87295f2e9b8d?w=800', 13),
 
+-- Disques durs & SSD (14)
+('Samsung 990 PRO 4To SSD NVMe', 'https://images.unsplash.com/photo-1593642634521-2e8d2a9d3f3f?w=800', 14),
+('WD Black SN850X 8To', 'https://images.unsplash.com/photo-1587202372850-3c4d7b5e3f3f?w=800', 14),
+('Seagate IronWolf Pro 20To HDD', 'https://images.unsplash.com/photo-1587202372677-87295f2e9b8d?w=800', 14);
 CREATE TYPE type_mouvement_stock AS ENUM ('entree', 'sortie');
 CREATE TYPE mode_paiement AS ENUM ('cash', 'mobile_money', 'carte');
 

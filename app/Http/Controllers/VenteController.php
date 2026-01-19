@@ -23,6 +23,17 @@ class VenteController extends Controller
         return view('ventes.create', compact('produits', 'cart', 'total'));
     }
 
+    public function indexPanier()  // Changé de create() à index()
+    {
+        $produits = Produit::with('categorie')->get();
+        $cart = Session::get('cart', []);
+        $total = 0;
+        foreach ($cart as $item) {
+            $total += $item['prix'] * $item['quantite'];
+        }
+        return view('panier.index', compact('cart', 'total'));
+    }
+
     public function addToCart(Request $request)
     {
         $request->validate([

@@ -65,6 +65,10 @@
                         <li><a href="{{ route('historique-prix.index') }}" class="{{ request()->routeIs('mouvements.*') ? 'active' : '' }}">
                             <i class="bi bi-arrow-left-right"></i> History prix
                         </a></li>
+
+                        <li><a href="{{ route('panier.index') }}" class="{{ request()->routeIs('mouvements.*') ? 'active' : '' }}">
+                            <i class="bi bi-arrow-left-right"></i> voir Panier
+                        </a></li>
                     </ul>
                 </div>
             </div>

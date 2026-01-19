@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MouvementStockController;
 
+Route::middleware(['web'])->group(function () {
 Route::get('/mouvement_stock', [MouvementStockController::class, 'index'])
     ->name('mouvements.index');
 
@@ -20,3 +21,4 @@ Route::get('/mouvement_stock/filter', [MouvementStockController::class, 'filter'
 Route::post('/mouvement_stock', [MouvementStockController::class, 'store'])
     ->name('mouvements.store');
     
+}); 
