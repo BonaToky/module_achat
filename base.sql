@@ -79,6 +79,7 @@ CREATE TABLE produit (
     nom VARCHAR(100) NOT NULL,
     image TEXT,
     id_categorie INT NOT NULL,
+    stock_actuel INT NOT NULL DEFAULT 0,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_produit_categorie

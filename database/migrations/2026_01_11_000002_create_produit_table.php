@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('nom', 100);
             $table->text('image')->nullable();
             $table->unsignedBigInteger('id_categorie');
+            $table->integer('stock_actuel')->default(0);
             $table->timestamps();
             $table->foreign('id_categorie')->references('id_categorie')->on('categorie');
         });

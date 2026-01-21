@@ -40,6 +40,18 @@
             <!-- Sidebar -->
             <div class="col-md-3 col-lg-2 sidebar d-md-block">
                 <div class="position-sticky pt-3">
+                    <div class="px-3 mb-4">
+                        @if(Session::has('user_id'))
+                            <p class="text-white">
+                                Connecté : {{ Session::get('user_name') }} 
+                                (ID: {{ Session::get('user_id') }})
+                            </p>
+                        @else
+                            <p class="text-white">Non connecté</p>
+                            <a href="{{ route('login.form') }}" class="btn btn-sm btn-light">Se connecter</a>
+                        @endif
+                    </div>
+
                     <h4 class="px-3 mb-4">Gestion Stock</h4>
                     <ul class="nav flex-column">
                         {{-- <li><a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
