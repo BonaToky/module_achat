@@ -167,6 +167,12 @@ class ProduitController extends Controller
         }
     }
 
+    public function updateStockActuel($nouveauStock)
+    {
+        $this->stock_actuel = $nouveauStock;
+        return $this->save();
+    }
+
     /**
      * Méthode pour récupérer l'URL complète de l'image
      */

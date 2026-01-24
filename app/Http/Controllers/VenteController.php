@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Produit;
 use App\Models\Ticket;
 use App\Models\DetailsVente;
+use App\Controllers\ProduitController;
 use App\Models\MouvementStock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -67,6 +68,57 @@ class VenteController extends Controller
         return back();
     }
 
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'id_client' => 'required|exists:users,id_users',
+    //         'mode_paiement' => 'required|in:cash,mobile_money,carte',
+    //     ]);
+
+    //     $cart = Session::get('cart', []);
+    //     if (empty($cart)) {
+    //         return back()->withErrors(['cart' => 'Panier vide.']);
+    //     }
+
+    //     $ticketId = DB::transaction(function () use ($request, $cart) {
+    //         $total = 0;
+    //         foreach ($cart as $id_produit => $item) {
+    //             $total += $item['prix'] * $item['quantite'];
+    //         }
+
+    //         $ticket = Ticket::create([
+    //             'mode_paiement' => $request->mode_paiement,
+    //             'total' => $total,
+    //             'date_vente' => now(),
+    //             'id_client' => $request->id_client,
+    //         ]);
+
+    //         foreach ($cart as $id_produit => $item) {
+    //             DetailsVente::create([
+    //                 'id_produit' => $id_produit,
+    //                 'id_ticket' => $ticket->id_ticket,
+    //                 'quantite' => $item['quantite'],
+    //                 'prix_unitaire' => $item['prix'],
+    //                 'total_ligne' => $item['prix'] * $item['quantite'],
+    //             ]);
+
+    //             // Mise à jour stock
+    //             MouvementStock::create([
+    //                 'type_mouvement_stock' => 'sortie',
+    //                 'quantite' => $item['quantite'],
+    //                 'date_mouv' => now(),
+    //                 'id_categorie' => Produit::find($id_produit)->id_categorie,
+    //                 'id_produit' => $id_produit,
+    //             ]);
+    //         }
+
+    //         return $ticket->id_ticket;
+    //     });
+
+    //     Session::forget('cart');
+    //     return redirect()->route('ventes.show', $ticketId);
+    // }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -81,7 +133,22 @@ class VenteController extends Controller
 
         $ticketId = DB::transaction(function () use ($request, $cart) {
             $total = 0;
+            
+            // Vérifier les stocks avant de procéder
             foreach ($cart as $id_produit => $item) {
+                $produit = Produit::find($id_produit);
+                
+                // Vérifier si le produit existe
+                if (!$produit) {
+                    throw new \Exception("Le produit avec l'ID $id_produit n'existe pas.");
+                }
+                
+                // Vérifier si la quantité en stock est suffisante
+                // Supposons que votre colonne de stock est 'stock_actuel'
+                if ($produit->stock_actuel < $item['quantite']) {
+                    throw new \Exception("Stock insuffisant pour le produit: {$produit->nom}. Stock disponible: {$produit->stock_actuel}, Quantité demandée: {$item['quantite']}");
+                }
+                
                 $total += $item['prix'] * $item['quantite'];
             }
 
@@ -93,6 +160,13 @@ class VenteController extends Controller
             ]);
 
             foreach ($cart as $id_produit => $item) {
+                $produit = Produit::find($id_produit);
+                $stockAvant = $produit->stock_actuel;
+                
+                // Calculer le nouveau stock
+                $nouveauStock = $stockAvant - $item['quantite'];
+                
+                // Créer le détail de vente
                 DetailsVente::create([
                     'id_produit' => $id_produit,
                     'id_ticket' => $ticket->id_ticket,
@@ -101,13 +175,19 @@ class VenteController extends Controller
                     'total_ligne' => $item['prix'] * $item['quantite'],
                 ]);
 
-                // Mise à jour stock
+                // Mise à jour du stock du produit en utilisant votre méthode
+                $produit->updateStockActuel($nouveauStock);
+
+                // Enregistrer le mouvement de stock
                 MouvementStock::create([
                     'type_mouvement_stock' => 'sortie',
                     'quantite' => $item['quantite'],
                     'date_mouv' => now(),
-                    'id_categorie' => Produit::find($id_produit)->id_categorie,
+                    'id_categorie' => $produit->id_categorie,
                     'id_produit' => $id_produit,
+                    'stock_avant' => $stockAvant, // Stock avant l'opération
+                    'stock_apres' => $nouveauStock, // Stock après l'opération
+                    'id_ticket' => $ticket->id_ticket, // Optionnel: lier le mouvement au ticket
                 ]);
             }
 
@@ -115,7 +195,8 @@ class VenteController extends Controller
         });
 
         Session::forget('cart');
-        return redirect()->route('ventes.show', $ticketId);
+        return redirect()->route('ventes.show', $ticketId)
+            ->with('success', 'Vente effectuée avec succès!');
     }
 
     public function show($id_ticket)
